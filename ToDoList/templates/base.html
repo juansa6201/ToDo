@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>ToDoList</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+
+<nav>
+    <div class="nav-wrapper purple">
+        <a href="#" style="margin-left: 800px" class="brand-logo">ToDoList</a>
+
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            {% now "j F Y H:i" %}
+        </ul>
+    </div>
+</nav>
+
+<main>
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <div class="container">
+        <form method="POST">
+
+            <div class="form-group">{% csrf_token %}
+                <h4>ToDo</h4>
+                {{ form.message }}
+            </div>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+        </form>
+    </div>
+
+    <div class="container">
+        <div class="card">
+            <table class="centered">
+                <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Tarea</th>
+                    <th>Eliminar</th>
+                    <th>Archivar</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for todo in todo %}
+                    {% if todo.archived %}
+                        {% else %}
+                    <tr>
+                        <td>{{ todo.datetime | date:"d/m/Y-H:i"  }} hs</td>
+                        <td>{{ todo.message }}</td>
+                        <td><a class="black-text" href="{% url 'delete' todo.id %}"><i class="material-icons">delete</i></a></td>
+                        <td> <a class="black-text" href="{% url 'archive' todo.id %}"><i class="material-icons">archive</i></a></td>
+                    </tr>
+                    {% endif %}
+                {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+{% endblock %}
