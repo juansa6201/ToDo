@@ -9,9 +9,8 @@ def get_list(request):
     if request.method=='POST':
         form = FormToDo(request.POST)
         if form.is_valid():
-            post=form.save(commit=False)
-            post.user =request.user
-            post.save()
+            form.save(commit=False)
+            form.save()
             return redirect('../')
     else:
         form = FormToDo()
